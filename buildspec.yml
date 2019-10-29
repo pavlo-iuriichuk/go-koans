@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      golang: 1.12
+  build:
+    commands:
+      - echo Building the Go code...
+      - cd $CODEBUILD_SRC_DIR
+      - go build about_allocation.go
+artifacts:
+  secondary-artifacts:
+    golang_artifacts:
+      base-directory: $CODEBUILD_SRC_DIR
+      files:
+        - about_allocation
